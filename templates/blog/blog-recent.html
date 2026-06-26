@@ -1,0 +1,15 @@
+{% load humanize %}
+<!-- Recent Posts Widget -->
+<div class="recent-posts-widget widget-item">
+
+    <h3 class="widget-title">Recent Posts</h3>
+    {% for post in posts %}
+    <div class="post-item">
+    <img src="{{post.image.url}}" alt="" class="flex-shrink-0">
+    <div>
+        <h4><a href="{% url 'blog:single' pid=post.id %}">{{post.title}}</a></h4>
+        <time datetime="{{post.created_date|naturaltime}}">{{post.created_date|naturaltime}}</time>
+    </div>
+    </div><!-- End recent post item-->
+    {% endfor %}
+</div><!--/Recent Posts Widget -->

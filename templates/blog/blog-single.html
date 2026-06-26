@@ -1,0 +1,307 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load humanize %}
+{% load blog_tags %}
+
+{% block main %}
+
+  <main class="main">
+
+    <!-- Page Title -->
+    <div class="page-title" data-aos="fade">
+      <div class="container">
+        <nav class="breadcrumbs">
+          <ol>
+            <li><a href="{% url 'website:index' %}">Home</a></li>
+            <li class="current">{{post.title}}</li>
+          </ol>
+        </nav>
+        <h1>{{post.title}}</h1>
+      </div>
+    </div><!-- End Page Title -->
+
+    <div class="container">
+      <div class="row">
+
+        <div class="col-lg-8">
+
+          <!-- Blog Details Section -->
+          <section id="blog-details" class="blog-details section">
+            <div class="container" data-aos="fade-up">
+
+              <article class="article">
+
+                <div class="hero-img" data-aos="zoom-in">
+                  <img src="{{post.image.url}}" alt="Featured blog image" class="img-fluid" loading="lazy">
+                  <div class="meta-overlay">
+                    <div class="meta-categories">
+                      {% for cat in post.category.all %}
+                      <a href="{% url 'blog:category' cat_name=cat.name %}" class="category">{{cat.name}}</a>
+                      {% endfor %}
+                      <span class="divider">•</span>
+                      <span class="reading-time"><i class="bi bi-clock"></i> {{post.reading_time}} min read</span>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="article-content" data-aos="fade-up" data-aos-delay="100">
+                  <div class="content-header">
+                    <h1 class="title">{{post.title}}</h1>
+
+                    <div class="author-info">
+                      <div class="author-details">
+                        <img src="{% static 'assets/img/user_1.png' %}" alt="Author" class="author-img">
+                        <div class="info">
+                          <h4><a href="{% url 'blog:author' auth_username=post.author.username %}">{{post.author.get_full_name}}</a></h4>
+                          <span class="role">Blog writer</span>
+                        </div>
+                      </div>
+                      <div class="post-meta">
+                        <span class="date"><i class="bi bi-calendar3"></i>{{post.created_date|date:"d M Y"}}</span>
+                        <span class="divider">•</span>
+                        <span class="comments"><i class="bi bi-chat-text"></i> {{comments|length}} Comments</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="content">
+                    {{post.content|safe}}
+                  
+                  <div class="row mt-5">
+    
+                    {% if previous_post %}
+                    <div class="col-md-6 mb-3">
+                        <a href="{% url 'blog:single' pid=previous_post.id %}"
+                          class="card text-decoration-none h-100">
+                            <div class="row g-0 align-items-center">
+                                <div class="col-4">
+                                    <img src="{{ previous_post.image.url }}"
+                                        class="img-fluid rounded-start"
+                                        alt="{{ previous_post.title }}"
+                                        width="100px">
+                                </div>
+                                <div class="col-8">
+                                    <div class="card-body">
+                                        <small class="text-muted">
+                                            <i class="bi bi-arrow-left"></i> Prev Post
+                                        </small>
+                                        <h5 class="card-title mt-2">
+                                            {{ previous_post.title }}
+                                        </h5>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    {% endif %}
+
+                    {% if next_post %}
+                    <div class="col-md-6 mb-3">
+                        <a href="{% url 'blog:single' pid=next_post.id %}"
+                          class="card text-decoration-none h-100">
+                            <div class="row g-0 align-items-center">
+                                <div class="col-8 text-end">
+                                    <div class="card-body">
+                                        <small class="text-muted">
+                                            Next Post <i class="bi bi-arrow-right"></i>
+                                        </small>
+                                        <h5 class="card-title mt-2">
+                                            {{ next_post.title }}
+                                        </h5>
+                                    </div>
+                                </div>
+                                <div class="col-4">
+                                    <img src="{{ next_post.image.url }}"
+                                        class="img-fluid rounded-end"
+                                        alt="{{ next_post.title }}"
+                                        width="100px">
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    {% endif %}
+
+                </div>
+                  </div>
+                  <div class="meta-bottom">
+                    <div class="tags-section">
+                      <h4>Tags</h4>
+                      <div class="tags">
+                        {% for tag in post.tag.all %}
+                        <a href="{% url 'blog:tag' tag_name=tag.name %}" class="tag">{{tag.name}}</a>
+                        {% endfor %}
+                      </div>
+                    </div>
+
+                    <div class="share-section">
+                      <h4>Share Article</h4>
+                      <div class="social-links">
+                        <a href="#" class="twitter"><i class="bi bi-twitter-x"></i></a>
+                        <a href="#" class="facebook"><i class="bi bi-facebook"></i></a>
+                        <a href="#" class="linkedin"><i class="bi bi-linkedin"></i></a>
+                        <a href="#" class="copy-link" title="Copy Link"><i class="bi bi-link-45deg"></i></a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+              </article>
+
+            </div>
+          </section><!-- /Blog Details Section -->
+
+          <!-- Blog Comments Section -->
+          <section id="blog-comments" class="blog-comments section">
+
+            <div class="container" data-aos="fade-up" data-aos-delay="100">
+
+              <div class="blog-comments-4">
+                <div class="comments-header">
+                  <h3 class="title">Community Feedback</h3>
+                  <div class="comments-stats">
+                    <span class="count">{{comments|length}}</span>
+                    <span class="label">Comments</span>
+                  </div>
+                </div>
+
+                <div class="comments-container">
+                  <!-- Comment -->
+                  {% for comment in comments %}
+                  <div class="comment-thread">
+                    <div class="comment-box">
+                      <div class="comment-wrapper">
+                        <div class="avatar-wrapper">
+                          <img src="{% static 'assets/img/user_1.png' %}" alt="Avatar" loading="lazy">
+                          <span class="status-indicator"></span>
+                        </div>
+
+                        <div class="comment-content">
+                          <div class="comment-header">
+                            <div class="user-info">
+                              <h4>{{comment.name}}</h4>
+                              <span class="time-badge">
+                                <i class="bi bi-clock"></i>
+                                {{comment.created_date|naturaltime}}
+                              </span>
+                            </div>
+                            <div class="engagement">
+                              <span class="likes">
+                                <i class="bi bi-heart"></i>
+                                {{comment.like.count}}
+                              </span>
+                            </div>
+                          </div>
+
+                          <div class="comment-body">
+                            {{comment.message}}
+                          </div>
+
+                          <div class="comment-actions">
+                            <form action="{% url 'blog:like' cid=comment.id %}" method="post">
+                              {% csrf_token %}
+                              <button class="action-btn like-btn" aria-label="Like comment">
+                                <i class="bi bi-heart"></i>
+                                <span>Like</span>
+                              </button>
+                            </form>
+                            <!-- <button class="action-btn reply-btn" aria-label="Reply to comment">
+                              <i class="bi bi-chat"></i>
+                              <span>Reply</span>
+                            </button>
+                            <button class="action-btn share-btn" aria-label="Share comment">
+                              <i class="bi bi-share"></i>
+                              <span>Share</span>
+                            </button> -->
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  {% endfor %}
+                </div>
+              </div>
+
+            </div>
+
+          </section><!-- /Blog Comments Section -->
+
+          <!-- Blog Comment Form Section -->
+          <section id="blog-comment-form" class="blog-comment-form section">
+
+            <div class="container" data-aos="fade-up" data-aos-delay="100">
+
+              <form method="post" role="form", action="{% url 'blog:single' pid=post.id %}">
+                {% csrf_token %}
+                <input type="hidden" name="post" value="{{post.id}}">
+                <div class="form-header">
+                  <h3>Leave a Comment</h3>
+                  <p>Your email address will not be published. Required fields are marked *</p>
+                </div>
+
+                <div class="row gy-3">
+                  <div class="col-md-6">
+                    <div class="input-group">
+                      <label for="name">Full Name *</label>
+                      <input type="text" name="name" id="name" placeholder="Enter your full name" required="">
+                      <span class="error-text">Please enter your name</span>
+                    </div>
+                  </div>
+
+                  <div class="col-md-6">
+                    <div class="input-group">
+                      <label for="email">Email Address *</label>
+                      <input type="email" name="email" id="email" placeholder="Enter your email address" required="">
+                      <span class="error-text">Please enter a valid email address</span>
+                    </div>
+                  </div>
+
+                  <div class="col-12">
+                    <div class="input-group">
+                      <label for="website">Subject</label>
+                      <input type="text" name="subject" id="website" placeholder="Your subject (optional)">
+                    </div>
+                  </div>
+
+                  <div class="col-12">
+                    <div class="input-group">
+                      <label for="comment">Your Comment *</label>
+                      <textarea name="message" id="comment" rows="5" placeholder="Write your thoughts here..." required=""></textarea>
+                      <span class="error-text">Please enter your comment</span>
+                    </div>
+                  </div>
+
+                  <div class="col-12 text-center">
+                    <button type="submit">Post Comment</button>
+                  </div>
+                </div>
+
+              </form>
+
+            </div>
+
+          </section><!-- /Blog Comment Form Section -->
+
+        </div>
+
+        <div class="col-lg-4 sidebar">
+
+          <div class="widgets-container" data-aos="fade-up" data-aos-delay="200">
+
+            {% include 'blog/blog-search.html' %}
+
+            {% recentposts %}
+
+            {% categories %}
+
+            {% alltags %}
+
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+
+  </main>
+
+{% endblock %}

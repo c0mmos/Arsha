@@ -1,0 +1,130 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load humanize %}
+{% load blog_tags %}
+
+{% block main %}
+
+  <main class="main">
+
+    <!-- Page Title -->
+    <div class="page-title" data-aos="fade">
+      <div class="container">
+        <nav class="breadcrumbs">
+          <ol>
+            <li><a href="{% url 'website:index' %}">Home</a></li>
+            <li class="current">Blog</li>
+          </ol>
+        </nav>
+        <h1>Blog</h1>
+      </div>
+    </div><!-- End Page Title -->
+
+    <div class="container">
+      <div class="row">
+
+        <div class="col-lg-8">
+
+          <!-- Blog Posts Section -->
+          <section id="blog-posts" class="blog-posts section">
+
+            <div class="container" data-aos="fade-up" data-aos-delay="100">
+
+              <div class="row gy-4">
+                {% for post in posts %}
+                <div class="col-lg-6">
+                  <article>
+
+                    <div class="post-img">
+                      <img src="{{post.image.url}}" alt="" class="img-fluid" width="344" height="300">
+                    </div>
+
+                    <h2 class="title">
+                      <a href="{% url 'blog:single' pid=post.id %}">{{post.title}}</a>
+                    </h2>
+
+                    <div class="d-flex flex-wrap gap-3 text-muted small mb-3">
+                      <span>
+                          <i class="bi bi-person"></i>
+                          <a href="{% url 'blog:author' auth_username=post.author.username %}">{{ post.author.get_full_name }}</a>
+                      </span>
+
+                      <span>
+                          <i class="bi bi-calendar"></i>
+                          {{ post.created_date|date:"d M Y" }}
+                      </span>
+
+                      <span>
+                          <i class="bi bi-chat"></i>
+                          {% commentlength post.id %} Comments
+                      </span>
+                  </div>
+
+                    <div class="content">
+                      <p>
+                        {{post.content|truncatewords:10|safe}}
+                      </p>
+
+                      <div class="read-more">
+                        <a href="{% url 'blog:single' pid=post.id %}">Read More</a>
+                      </div>
+                    </div>
+
+                  </article>
+                </div><!-- End post list item -->
+                {% endfor %}
+              </div><!-- End blog posts list -->
+
+            </div>
+
+          </section><!-- /Blog Posts Section -->
+
+          <!-- Pagination 2 Section -->
+          <section id="pagination-2" class="pagination-2 section">
+
+            <div class="container">
+              <div class="d-flex justify-content-center">
+                <ul>
+                  {% if posts.has_previous %}
+                    <li><a href="?page={{posts.previous_page_number}}"><i class="bi bi-chevron-left"></i></a></li>
+                  {% endif %}
+                  {% for i in posts.paginator.page_range %}
+                  {% if i == posts.page_number %}
+                    <li><a href="?page={{i}}" class="active">{{i}}</a></li>
+                  {% else %}
+                    <li><a href="?page={{i}}">{{i}}</a></li>
+                  {% endif %}
+                  {% endfor %}
+                  {% if posts.has_next %}
+                    <li><a href="?page={{posts.next_page_number}}"><i class="bi bi-chevron-right"></i></a></li>
+                  {% endif %}
+                </ul>
+              </div>
+            </div>
+
+          </section><!-- /Pagination 2 Section -->
+
+        </div>
+
+        <div class="col-lg-4 sidebar">
+
+          <div class="widgets-container" data-aos="fade-up" data-aos-delay="200">
+
+            {% include 'blog/blog-search.html' %}
+
+            {% recentposts %}
+
+            {% categories %}
+
+            {% alltags %}
+
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+
+  </main>
+
+{% endblock %}
