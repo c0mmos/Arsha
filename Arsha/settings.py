@@ -31,7 +31,7 @@ ALLOWED_HOSTS = ['127.0.0.1', 'localhost']
 
 # Application definition
 
-SITE_ID = 1
+SITE_ID = 2
 
 SUMMERNOTE_THEME = 'bs4'
 
@@ -84,7 +84,8 @@ INSTALLED_APPS = [
     'django.contrib.sitemaps',
     'taggit',
     'django_summernote',
-    'compressor'
+    'compressor',
+    'accounts.apps.AccountsConfig'
 ]
 
 STATICFILES_FINDERS = [
@@ -203,6 +204,8 @@ EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 
+EMAIL_HOST_USER = 'travelistaoff@gmail.com'
+EMAIL_HOST_PASSWORD = 'vnjljtneowmmzbbo'
 
 if DEBUG == False:
     SECURE_SSL_REDIRECT = True

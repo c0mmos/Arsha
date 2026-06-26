@@ -238,22 +238,27 @@
                   <p>Your email address will not be published. Required fields are marked *</p>
                 </div>
 
-                <div class="row gy-3">
-                  <div class="col-md-6">
-                    <div class="input-group">
-                      <label for="name">Full Name *</label>
-                      <input type="text" name="name" id="name" placeholder="Enter your full name" required="">
-                      <span class="error-text">Please enter your name</span>
+								{% if request.user.is_authenticated %}
+									<input type="hidden" name="name" value="{{request.user.username}}">
+									<input type="hidden" name="email" value="{{request.user.email}}">
+                {% else %}
+                  <div class="row gy-3">
+                    <div class="col-md-6">
+                      <div class="input-group">
+                        <label for="name">Full Name *</label>
+                        <input type="text" name="name" id="name" placeholder="Enter your full name" required="">
+                        <span class="error-text">Please enter your name</span>
+                      </div>
                     </div>
-                  </div>
 
-                  <div class="col-md-6">
-                    <div class="input-group">
-                      <label for="email">Email Address *</label>
-                      <input type="email" name="email" id="email" placeholder="Enter your email address" required="">
-                      <span class="error-text">Please enter a valid email address</span>
+                    <div class="col-md-6">
+                      <div class="input-group">
+                        <label for="email">Email Address *</label>
+                        <input type="email" name="email" id="email" placeholder="Enter your email address" required="">
+                        <span class="error-text">Please enter a valid email address</span>
+                      </div>
                     </div>
-                  </div>
+                  {% endif %}
 
                   <div class="col-12">
                     <div class="input-group">

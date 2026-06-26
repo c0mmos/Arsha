@@ -5,6 +5,7 @@ import math
 from django.utils.html import strip_tags
 from taggit.managers import TaggableManager
 
+
 # Create your models here.
 class Category(models.Model):
     name = models.CharField(max_length=255)
