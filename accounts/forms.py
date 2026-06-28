@@ -1,8 +1,10 @@
-from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django import forms
 from django.contrib.auth.models import User
+from captcha.fields import CaptchaField
 
 class CreateUser(UserCreationForm):
+    captcha = CaptchaField()
     email = forms.EmailField(required=True, label='email')
     first_name = forms.CharField(required=True, max_length=255, label='first_name')
     last_name = forms.CharField(required=True, max_length=255, label='last_name')

@@ -4,7 +4,7 @@
     <h3 class="widget-title">Tags</h3>
     <ul>
     {% for tag in tags %}
-    <li><a href="{% url 'blog:tag' tag_name=tag.name %}">{{tag.name}}</a></li>
+        <li><a href="{% url 'blog:tag' tag_name=tag.name %}">{{tag.name}}</a></li>
     {% endfor %}
     </ul>
 

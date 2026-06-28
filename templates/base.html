@@ -6,7 +6,7 @@
 <head>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <title>Index - Arsha Bootstrap Template</title>
+  <title>{% block title %} {% endblock %}</title>
   <meta name="description" content="">
   <meta name="keywords" content="">
 
@@ -40,12 +40,11 @@
 
 <body class="index-page">
 
-  <header id="header" class="header d-flex align-items-center fixed-top">
-    <div class="container-fluid container-xl position-relative d-flex align-items-center">
+  <header id="header" class="header fixed-top d-flex align-items-center">
+    <div class="container-fluid container-xxl header-container d-flex align-items-center position-relative justify-content-between">
 
       <a href="{% url 'website:index' %}" class="logo d-flex align-items-center me-auto">
-        <!-- Uncomment the line below if you also wish to use an image logo -->
-        <!-- <img src="{% static 'assets/img/logo.webp" alt=""> -->
+        <img src="{% static 'assets/img/logo.webp' %}" alt="">
         <h1 class="sitename">Arsha</h1>
       </a>
 
@@ -55,16 +54,22 @@
           <li><a href="{% url 'website:about' %}">About</a></li>
           <li><a href="{% url 'blog:index' %}">Blog</a></li>
           <li><a href="{% url 'website:contact' %}">Contact</a></li>
+          {% if request.user.is_authenticated %}
+          <a href="{% url 'accounts:logout' %}" class="btn btn-outline-danger rounded-3 px-4 py-2 ms-3 me-2">Logout</a>
+          {% else %}
+          <a class="btn-getstarted ms-3 me-3" href="{% url 'accounts:login' %}">Log In</a>
+          <a class="btn-getstarted m-3" href="{% url 'accounts:signup' %}">Sign Up</a>
+          {% endif %}
         </ul>
         <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
       </nav>
 
-      {% if request.user.is_authenticated %}
+      <!-- {% if request.user.is_authenticated %}
       <a href="{% url 'accounts:logout' %}" class="btn btn-outline-danger rounded-3 px-4 py-2 ms-3"><i class="bi bi-box-arrow-right me-2"></i>Logout</a>
       {% else %}
       <a class="btn-getstarted ms-3" href="{% url 'accounts:login' %}">Log In</a>
       <a class="btn-getstarted ms-3" href="{% url 'accounts:signup' %}">Sign Up</a>
-      {% endif %}
+      {% endif %} -->
 
     </div>
   </header>
@@ -116,10 +121,10 @@
         <div class="col-lg-2 col-md-3 footer-links">
           <h4>Our Services</h4>
           <ul>
-            <li><i class="bi bi-chevron-right"></i> <a href="#">Web Design</a></li>
-            <li><i class="bi bi-chevron-right"></i> <a href="#">Web Development</a></li>
-            <li><i class="bi bi-chevron-right"></i> <a href="#">Product Management</a></li>
-            <li><i class="bi bi-chevron-right"></i> <a href="#">Marketing</a></li>
+            <li><i class="bi bi-chevron-right"></i> <a href="{% url 'website:services' %}">Web Design</a></li>
+            <li><i class="bi bi-chevron-right"></i> <a href="{% url 'website:services' %}">Web Development</a></li>
+            <li><i class="bi bi-chevron-right"></i> <a href="{% url 'website:services' %}">Product Management</a></li>
+            <li><i class="bi bi-chevron-right"></i> <a href="{% url 'website:services' %}">Marketing</a></li>
           </ul>
         </div>
 

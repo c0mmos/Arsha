@@ -14,7 +14,7 @@ from pathlib import Path
 from django.contrib import messages
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
-BASE_DIR = Path(__file__).resolve().parent.parent
+BASE_DIR = Path(__file__).resolve().parent.parent.parent
 
 
 # Quick-start development settings - unsuitable for production
@@ -22,11 +22,6 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'django-insecure-08b9z8(!5d7-0n#@6w9s$ea*&nzrw9!bl7*@17laq_0gczzr0z'
-
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
-
-ALLOWED_HOSTS = ['127.0.0.1', 'localhost']
 
 
 # Application definition
@@ -79,7 +74,6 @@ INSTALLED_APPS = [
     'django.contrib.humanize',
     'robots',
     'captcha',
-    'debug_toolbar',
     'django.contrib.sites',
     'django.contrib.sitemaps',
     'taggit',
@@ -105,7 +99,6 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'debug_toolbar.middleware.DebugToolbarMiddleware',
 ]
 
 ROOT_URLCONF = 'Arsha.urls'
@@ -195,9 +188,6 @@ MESSAGE_TAGS = {
     messages.ERROR: 'error',
 }
 
-INTERNAL_IPS = [
-    "127.0.0.1"
-]
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
@@ -206,20 +196,3 @@ EMAIL_USE_TLS = True
 
 EMAIL_HOST_USER = 'travelistaoff@gmail.com'
 EMAIL_HOST_PASSWORD = 'vnjljtneowmmzbbo'
-
-if DEBUG == False:
-    SECURE_SSL_REDIRECT = True
-
-    SECURE_HSTS_SECONDS = 31536000
-    SECURE_HSTS_INCLUDE_SUBDOMAINS = True
-    SECURE_HSTS_PRELOAD = True
-
-SECURE_CONTENT_TYPE_NOSNIFF = True
-X_FRAME_OPTIONS = "SAMEORIGIN"
-
-SECURE_REFERRER_POLICY = "strict-origin-when-cross-origin"
-
-SESSION_COOKIE_SECURE = True
-CSRF_COOKIE_SECURE = True
-SESSION_COOKIE_HTTPONLY = True
-CSRF_COOKIE_HTTPONLY = True

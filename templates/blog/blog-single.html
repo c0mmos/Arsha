@@ -3,12 +3,14 @@
 {% load humanize %}
 {% load blog_tags %}
 
+<title>{% block title %} Arsha - blog {{post.title}} {% endblock %}</title>
+
 {% block main %}
 
-  <main class="main">
+<main class="main">
 
     <!-- Page Title -->
-    <div class="page-title" data-aos="fade">
+    <div class="page-title aos-init aos-animate" data-aos="fade">
       <div class="container">
         <nav class="breadcrumbs">
           <ol>
@@ -27,11 +29,11 @@
 
           <!-- Blog Details Section -->
           <section id="blog-details" class="blog-details section">
-            <div class="container" data-aos="fade-up">
+            <div class="container aos-init aos-animate" data-aos="fade-up">
 
               <article class="article">
 
-                <div class="hero-img" data-aos="zoom-in">
+                <div class="hero-img aos-init aos-animate" data-aos="zoom-in">
                   <img src="{{post.image.url}}" alt="Featured blog image" class="img-fluid" loading="lazy">
                   <div class="meta-overlay">
                     <div class="meta-categories">
@@ -44,7 +46,7 @@
                   </div>
                 </div>
 
-                <div class="article-content" data-aos="fade-up" data-aos-delay="100">
+                <div class="article-content aos-init aos-animate" data-aos="fade-up" data-aos-delay="100">
                   <div class="content-header">
                     <h1 class="title">{{post.title}}</h1>
 
@@ -66,64 +68,60 @@
 
                   <div class="content">
                     {{post.content|safe}}
-                  
-                  <div class="row mt-5">
-    
-                    {% if previous_post %}
-                    <div class="col-md-6 mb-3">
-                        <a href="{% url 'blog:single' pid=previous_post.id %}"
-                          class="card text-decoration-none h-100">
-                            <div class="row g-0 align-items-center">
-                                <div class="col-4">
-                                    <img src="{{ previous_post.image.url }}"
-                                        class="img-fluid rounded-start"
-                                        alt="{{ previous_post.title }}"
-                                        width="100px">
-                                </div>
-                                <div class="col-8">
-                                    <div class="card-body">
-                                        <small class="text-muted">
-                                            <i class="bi bi-arrow-left"></i> Prev Post
-                                        </small>
-                                        <h5 class="card-title mt-2">
-                                            {{ previous_post.title }}
-                                        </h5>
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                    {% endif %}
-
-                    {% if next_post %}
-                    <div class="col-md-6 mb-3">
-                        <a href="{% url 'blog:single' pid=next_post.id %}"
-                          class="card text-decoration-none h-100">
-                            <div class="row g-0 align-items-center">
-                                <div class="col-8 text-end">
-                                    <div class="card-body">
-                                        <small class="text-muted">
-                                            Next Post <i class="bi bi-arrow-right"></i>
-                                        </small>
-                                        <h5 class="card-title mt-2">
-                                            {{ next_post.title }}
-                                        </h5>
-                                    </div>
-                                </div>
-                                <div class="col-4">
-                                    <img src="{{ next_post.image.url }}"
-                                        class="img-fluid rounded-end"
-                                        alt="{{ next_post.title }}"
-                                        width="100px">
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                    {% endif %}
-
-                </div>
                   </div>
+
                   <div class="meta-bottom">
+                    <div class="row mt-5">
+                        {% if previous_post %}
+                        <div class="col-md-6 mb-3">
+                            <a href="{% url 'blog:single' pid=previous_post.id %}" class="card text-decoration-none h-100">
+                                <div class="row g-0 align-items-center">
+                                    <div class="col-4">
+                                        <img src="{{ previous_post.image.url }}" class="img-fluid rounded-start" alt="{{ previous_post.title }}" width="100px">
+                                    </div>
+                                    <div class="col-8">
+                                        <div class="card-body">
+                                            <small class="text-muted">
+                                                <i class="bi bi-arrow-left"></i> Prev Post
+                                            </small>
+                                            <h5 class="card-title mt-2">
+                                                {{ previous_post.title }}
+                                            </h5>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                        {% endif %}
+
+                        {% if next_post %}
+                        <div class="col-md-6 mb-3">
+                            <a href="{% url 'blog:single' pid=next_post.id %}" class="card text-decoration-none h-100">
+                                <div class="row g-0 align-items-center">
+                                  <div class="col-8">
+                                      <div class="card-body">
+                                          <small class="text-muted">
+                                              <i class="bi bi-arrow-left"></i> Next Post
+                                          </small>
+                                          <h5 class="card-title mt-2">
+                                              {{ next_post.title }}
+                                          </h5>
+                                      </div>
+                                  </div>
+                                  <div class="col-4">
+                                      <img src="{{ next_post.image.url }}"
+                                            class="img-fluid rounded-end"
+                                            alt="{{ next_post.title }}"
+                                            width="100px">
+                                  </div>
+                                </div>
+                            </a>
+                        </div>
+                        {% endif %}
+
+                        
+                    </div>
+
                     <div class="tags-section">
                       <h4>Tags</h4>
                       <div class="tags">
@@ -153,7 +151,7 @@
           <!-- Blog Comments Section -->
           <section id="blog-comments" class="blog-comments section">
 
-            <div class="container" data-aos="fade-up" data-aos-delay="100">
+            <div class="container aos-init aos-animate" data-aos="fade-up" data-aos-delay="100">
 
               <div class="blog-comments-4">
                 <div class="comments-header">
@@ -223,13 +221,13 @@
 
             </div>
 
-          </section><!-- /Blog Comments Section -->
+          </section>
 
           <!-- Blog Comment Form Section -->
           <section id="blog-comment-form" class="blog-comment-form section">
 
-            <div class="container" data-aos="fade-up" data-aos-delay="100">
-
+            <div class="container aos-init aos-animate" data-aos="fade-up" data-aos-delay="100">
+              
               <form method="post" role="form", action="{% url 'blog:single' pid=post.id %}">
                 {% csrf_token %}
                 <input type="hidden" name="post" value="{{post.id}}">
@@ -238,28 +236,29 @@
                   <p>Your email address will not be published. Required fields are marked *</p>
                 </div>
 
-								{% if request.user.is_authenticated %}
+								
+									{% if request.user.is_authenticated %}
 									<input type="hidden" name="name" value="{{request.user.username}}">
 									<input type="hidden" name="email" value="{{request.user.email}}">
-                {% else %}
+                
+                  {% else %}
                   <div class="row gy-3">
-                    <div class="col-md-6">
-                      <div class="input-group">
-                        <label for="name">Full Name *</label>
-                        <input type="text" name="name" id="name" placeholder="Enter your full name" required="">
-                        <span class="error-text">Please enter your name</span>
-                      </div>
+                  <div class="col-md-6">
+                    <div class="input-group">
+                      <label for="name">Full Name *</label>
+                      <input type="text" name="name" id="name" placeholder="Enter your full name" required="">
+                      <span class="error-text">Please enter your name</span>
                     </div>
+                  </div>
 
-                    <div class="col-md-6">
-                      <div class="input-group">
-                        <label for="email">Email Address *</label>
-                        <input type="email" name="email" id="email" placeholder="Enter your email address" required="">
-                        <span class="error-text">Please enter a valid email address</span>
-                      </div>
+                  <div class="col-md-6">
+                    <div class="input-group">
+                      <label for="email">Email Address *</label>
+                      <input type="email" name="email" id="email" placeholder="Enter your email address" required="">
+                      <span class="error-text">Please enter a valid email address</span>
                     </div>
+                  </div>
                   {% endif %}
-
                   <div class="col-12">
                     <div class="input-group">
                       <label for="website">Subject</label>
@@ -275,22 +274,23 @@
                     </div>
                   </div>
 
+                  <div class="mb-3">
+                      <label class="form-label">Verification Code</label>
+                      <div class="d-flex align-items-center gap-3 flex-wrap">
+                          {{ form.captcha }}
+                      </div>
+                  </div>
+
                   <div class="col-12 text-center">
                     <button type="submit">Post Comment</button>
                   </div>
-                </div>
+                </form></div>
 
-              </form>
+            </section></div>
 
-            </div>
+          <div class="col-lg-4 sidebar">
 
-          </section><!-- /Blog Comment Form Section -->
-
-        </div>
-
-        <div class="col-lg-4 sidebar">
-
-          <div class="widgets-container" data-aos="fade-up" data-aos-delay="200">
+          <div class="widgets-container aos-init aos-animate" data-aos="fade-up" data-aos-delay="200">
 
             {% include 'blog/blog-search.html' %}
 
@@ -304,8 +304,12 @@
 
         </div>
 
+        </div>
+
+        
+
       </div>
-    </div>
+    
 
   </main>
 

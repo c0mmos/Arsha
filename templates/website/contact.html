@@ -1,6 +1,8 @@
 {% extends 'base.html' %}
 {% load static %}
 
+<title>{% block title %} Arsha - Contact Us {% endblock %}</title>
+
 {% block main %}
 
 <!-- Contact Section -->
@@ -75,6 +77,13 @@
                 <div class="col-md-12">
                   <label for="message-field" class="pb-2">Message</label>
                   <textarea class="form-control" name="message" rows="10" id="message-field" required=""></textarea>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">Verification Code</label>
+                    <div class="d-flex align-items-center gap-3 flex-wrap">
+                        {{ form.captcha }}
+                    </div>
                 </div>
 
                 <div class="col-md-12 text-center">
