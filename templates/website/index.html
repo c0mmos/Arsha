@@ -3,7 +3,7 @@
 {% load humanize %}
 {% load website_tags %}
 
-<title>{% block title %} Arsha {% endblock %}</title>
+<title>{% block title %} Arsha - Web Development {% endblock %}</title>
 
 {% block main %}
 
@@ -15,15 +15,15 @@
       <div class="container">
         <div class="row gy-4">
           <div class="col-lg-6 order-2 order-lg-1 d-flex flex-column justify-content-center" data-aos="zoom-out">
-            <h1>Better Solutions For Your Business</h1>
-            <p>We are team of talented designers making websites with Bootstrap</p>
+            <h1>Learn Django & Build Modern Web Applications</h1>
+            <p>Practical tutorials, programming guides, and web development articles to help developers build better projects with Django, Python, and modern web technologies.</p>
             <div class="d-flex">
               <a href="{% url 'website:about' %}" class="btn-get-started">Get Started</a>
-              <a href="https://www.youtube.com/watch?v=Y7f98aduVJ8" class="glightbox btn-watch-video d-flex align-items-center"><i class="bi bi-play-circle"></i><span>Watch Video</span></a>
+              <a href="{% url 'blog:index' %}" class="glightbox btn-watch-video d-flex align-items-center"><i class="bi bi-play-circle"></i><span>Browse Articles</span></a>
             </div>
           </div>
           <div class="col-lg-6 order-1 order-lg-2 hero-img" data-aos="zoom-out" data-aos-delay="200">
-            <img src="{% static 'assets/img/hero-img.png' %}" class="img-fluid animated" alt="">
+            <img src="{% static 'assets/img/hero-img.png' %}" class="img-fluid animated" alt="About us">
           </div>
         </div>
       </div>
@@ -74,14 +74,14 @@
             }
           </script>
           <div class="swiper-wrapper align-items-center">
-            <div class="swiper-slide"><img src="{% static 'assets/img/clients/clients-1.webp' %}" class="img-fluid" alt=""></div>
-            <div class="swiper-slide"><img src="{% static 'assets/img/clients/clients-2.webp' %}" class="img-fluid" alt=""></div>
-            <div class="swiper-slide"><img src="{% static 'assets/img/clients/clients-3.webp' %}" class="img-fluid" alt=""></div>
-            <div class="swiper-slide"><img src="{% static 'assets/img/clients/clients-4.webp' %}" class="img-fluid" alt=""></div>
-            <div class="swiper-slide"><img src="{% static 'assets/img/clients/clients-5.webp' %}" class="img-fluid" alt=""></div>
-            <div class="swiper-slide"><img src="{% static 'assets/img/clients/clients-6.webp' %}" class="img-fluid" alt=""></div>
-            <div class="swiper-slide"><img src="{% static 'assets/img/clients/clients-7.webp' %}" class="img-fluid" alt=""></div>
-            <div class="swiper-slide"><img src="{% static 'assets/img/clients/clients-8.webp' %}" class="img-fluid" alt=""></div>
+            <div class="swiper-slide"><img src="{% static 'assets/img/clients/clients-1.webp' %}" class="img-fluid" alt="clients"></div>
+            <div class="swiper-slide"><img src="{% static 'assets/img/clients/clients-2.webp' %}" class="img-fluid" alt="clients"></div>
+            <div class="swiper-slide"><img src="{% static 'assets/img/clients/clients-3.webp' %}" class="img-fluid" alt="clients"></div>
+            <div class="swiper-slide"><img src="{% static 'assets/img/clients/clients-4.webp' %}" class="img-fluid" alt="clients"></div>
+            <div class="swiper-slide"><img src="{% static 'assets/img/clients/clients-5.webp' %}" class="img-fluid" alt="clients"></div>
+            <div class="swiper-slide"><img src="{% static 'assets/img/clients/clients-6.webp' %}" class="img-fluid" alt="clients"></div>
+            <div class="swiper-slide"><img src="{% static 'assets/img/clients/clients-7.webp' %}" class="img-fluid" alt="clients"></div>
+            <div class="swiper-slide"><img src="{% static 'assets/img/clients/clients-8.webp' %}" class="img-fluid" alt="clients"></div>
           </div>
         </div>
 
@@ -99,9 +99,9 @@
           <div class="col-lg-7 d-flex flex-column justify-content-center order-2 order-lg-1">
 
             <div class="content px-xl-5" data-aos="fade-up" data-aos-delay="100">
-              <h3><span>Eum ipsam laborum deleniti </span><strong>velit pariatur architecto aut nihil</strong></h3>
+              <h3><span>Helping developers learn faster with</span> <strong>clear tutorials and real-world examples</strong></h3>
               <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Duis aute irure dolor in reprehenderit
+                Whether you're just starting with Python or building production-ready Django applications, Arsha provides step-by-step tutorials, deployment guides, best practices, and practical tips to help you become a better developer.
               </p>
             </div>
 
@@ -109,25 +109,25 @@
 
               <div class="faq-item faq-active">
 
-                <h3><span>01</span> Non consectetur a erat nam at lectus urna duis?</h3>
+                <h3><span>01</span> What topics does Arsha cover?</h3>
                 <div class="faq-content">
-                  <p>Feugiat pretium nibh ipsum consequat. Tempus iaculis urna id volutpat lacus laoreet non curabitur gravida. Venenatis lectus magna fringilla urna porttitor rhoncus dolor purus non.</p>
+                  <p>We publish articles about Django, Python, HTML, CSS, JavaScript, deployment, databases, Git, Linux, and other technologies used in modern web development.</p>
                 </div>
                 <i class="faq-toggle bi bi-chevron-right"></i>
               </div><!-- End Faq item-->
 
               <div class="faq-item">
-                <h3><span>02</span> Feugiat scelerisque varius morbi enim nunc faucibus a pellentesque?</h3>
+                <h3><span>02</span> Are the tutorials beginner friendly?</h3>
                 <div class="faq-content">
-                  <p>Dolor sit amet consectetur adipiscing elit pellentesque habitant morbi. Id interdum velit laoreet id donec ultrices. Fringilla phasellus faucibus scelerisque eleifend donec pretium. Est pellentesque elit ullamcorper dignissim. Mauris ultrices eros in cursus turpis massa tincidunt dui.</p>
+                  <p>Yes. Our tutorials explain concepts step by step while also including practical examples that experienced developers can benefit from.</p>
                 </div>
                 <i class="faq-toggle bi bi-chevron-right"></i>
               </div><!-- End Faq item-->
 
               <div class="faq-item">
-                <h3><span>03</span> Dolor sit amet consectetur adipiscing elit pellentesque?</h3>
+                <h3><span>03</span> How often is new content published?</h3>
                 <div class="faq-content">
-                  <p>Eleifend mi in nulla posuere sollicitudin aliquam ultrices sagittis orci. Faucibus pulvinar elementum integer enim. Sem nulla pharetra diam sit amet nisl suscipit. Rutrum tellus pellentesque eu tincidunt. Lectus urna duis convallis convallis tellus. Urna molestie at elementum eu facilisis sed odio morbi quis</p>
+                  <p>New articles are published regularly, covering new Django features, programming techniques, deployment guides, troubleshooting, and development best practices.</p>
                 </div>
                 <i class="faq-toggle bi bi-chevron-right"></i>
               </div><!-- End Faq item-->
@@ -137,7 +137,7 @@
           </div>
 
           <div class="col-lg-5 order-1 order-lg-2 why-us-img">
-            <img src="{% static 'assets/img/why-us.png' %}" class="img-fluid" alt="" data-aos="zoom-in" data-aos-delay="100">
+            <img src="{% static 'assets/img/why-us.png' %}" class="img-fluid" alt="Why Us" data-aos="zoom-in" data-aos-delay="100">
           </div>
         </div>
 
@@ -153,36 +153,36 @@
         <div class="row">
 
           <div class="col-lg-6 d-flex align-items-center">
-            <img src="{% static 'assets/img/illustration/illustration-10.webp' %}" class="img-fluid" alt="">
+            <img src="{% static 'assets/img/illustration/illustration-10.webp' %}" class="img-fluid" alt="Our Skills">
           </div>
 
           <div class="col-lg-6 pt-4 pt-lg-0 content">
 
-            <h3>Voluptatem dignissimos provident quasi corporis voluptas</h3>
+            <h3>Technologies we write about and use every day</h3>
             <p class="fst-italic">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+              From frontend fundamentals to backend development, our content focuses on practical skills that developers use to build modern websites and web applications.
             </p>
 
             <div class="skills-content skills-animation">
 
               <div class="progress">
-                <span class="skill"><span>HTML</span> <i class="val">65%</i></span>
+                <span class="skill"><span>HTML</span> <i class="val"">95%</i></span>
                 <div class="progress-bar-wrap">
-                  <div class="progress-bar" role="progressbar" aria-valuenow="65" aria-valuemin="0" aria-valuemax="100"></div>
+                  <div class="progress-bar" role="progressbar" aria-valuenow="95" aria-valuemin="0" aria-valuemax="100"></div>
                 </div>
               </div><!-- End Skills Item -->
 
               <div class="progress">
-                <span class="skill"><span>CSS</span> <i class="val">75%</i></span>
+                <span class="skill"><span>CSS</span> <i class="val"">90%</i></span>
                 <div class="progress-bar-wrap">
-                  <div class="progress-bar" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
+                  <div class="progress-bar" role="progressbar" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100"></div>
                 </div>
               </div><!-- End Skills Item -->
 
               <div class="progress">
-                <span class="skill"><span>JavaScript</span> <i class="val">55%</i></span>
+                <span class="skill"><span>JavaScript</span> <i class="val"">85%</i></span>
                 <div class="progress-bar-wrap">
-                  <div class="progress-bar" role="progressbar" aria-valuenow="55" aria-valuemin="0" aria-valuemax="100"></div>
+                  <div class="progress-bar" role="progressbar" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100"></div>
                 </div>
               </div><!-- End Skills Item -->
 
@@ -208,11 +208,11 @@
         <div class="row gy-4 justify-content-between align-items-center">
           <div class="col-lg-6">
             <div class="cta-content" data-aos="fade-up" data-aos-delay="200">
-              <h2>Subscribe to our newsletter</h2>
-              <p>Proin eget tortor risus. Mauris blandit aliquet elit, eget tincidunt nibh pulvinar a. Curabitur aliquet quam id dui posuere blandit.</p>
+              <h2>Stay Updated with New Tutorials</h2>
+              <p>Subscribe to receive the latest Django tutorials, Python tips, deployment guides, and web development articles directly in your inbox.</p>
               <form action="{% url 'website:newsletter' %}" method="post">
                 <div class="input-group mb-3">
-                  <input type="email" class="form-control" placeholder="Email address..." aria-label="Email address" aria-describedby="button-subscribe">
+                  <input type="email" class="form-control" placeholder="Enter your email address..." aria-label="Email address" aria-describedby="button-subscribe">
                   <button class="btn btn-primary" type="submit" id="button-subscribe">Subscribe</button>
                 </div>
               </form>
@@ -220,7 +220,7 @@
           </div>
           <div class="col-lg-4">
             <div class="cta-image" data-aos="zoom-out" data-aos-delay="200">
-              <img src="{% static 'assets/img/cta/cta-1.webp' %}" alt="" class="img-fluid">
+              <img src="{% static 'assets/img/cta/cta-1.webp' %}" alt="Subscribe" class="img-fluid">
             </div>
           </div>
         </div>
