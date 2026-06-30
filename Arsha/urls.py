@@ -43,6 +43,8 @@ urlpatterns = [
     path('captcha/', include('captcha.urls')),
 ]
 
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
 handler404 = 'website.views.handler404'
 handler500 = 'website.views.handler500'
 handler403 = 'website.views.handler403'
