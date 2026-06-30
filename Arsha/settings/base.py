@@ -65,6 +65,7 @@ MULTI_CAPTCHA_ADMIN = {
 # Application definition
 
 INSTALLED_APPS = [
+    'whitenoise.runserver_nostatic',
     'multi_captcha_admin',
     'django.contrib.admin',
     'django.contrib.auth',
