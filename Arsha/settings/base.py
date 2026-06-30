@@ -132,7 +132,7 @@ WSGI_APPLICATION = 'Arsha.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'NAME': "/database/db.sqlite3",
     }
 }
 
@@ -187,7 +187,7 @@ STORAGES = {
 }
 
 MEDIA_URL = '/media/'
-MEDIA_ROOT = BASE_DIR / 'media'
+MEDIA_ROOT = '/database/media'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
