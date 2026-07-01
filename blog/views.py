@@ -19,7 +19,7 @@ def blog_index(request, auth_username=None, cat_name=None, tag_name=None):
     if tag_name:
         posts = posts.filter(tag__name__in=[tag_name])
         
-    posts = Paginator(posts, 2)
+    posts = Paginator(posts, 4)
     try:
         page_number = request.GET.get('page')
         posts = posts.get_page(page_number)
